@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public enum JiraTestData {
     username ("ivan.velchev.a61@learn.telerikacademy.com"),
-    password ("Voltran143276"),
+    password ("**********"),
     jiraProjectName("");
 
     private  String value;
