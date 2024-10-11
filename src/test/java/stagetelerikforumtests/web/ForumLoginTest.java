@@ -1,4 +1,22 @@
 package stagetelerikforumtests.web;
 
-public class ForumLoginTest {
+import atlassiantests.unums.JiraTestData;
+import org.junit.jupiter.api.Test;
+import stagetelerikforumtests.core.ForumBaseTest;
+import stagetelerikforumtests.unums.ForumTestData;
+
+public class ForumLoginTest extends ForumBaseTest {
+
+    @Test
+    public void userAuthenticated_when_validCredentialsProvided() {
+
+        stageForumLoginPage.navigate();
+
+        stageForumLoginPage.submitLoginForm(ForumTestData.username.getValue(), ForumTestData.password.getValue());
+
+
+
+
+
+    }
 }

@@ -31,16 +31,6 @@ public class JiraLoginTest extends JiraBaseTest {
 
 
     }
-
-
-
-
-
-
-
-
-
-
 }
 
 
