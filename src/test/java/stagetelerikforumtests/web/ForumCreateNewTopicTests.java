@@ -1,11 +1,12 @@
 package stagetelerikforumtests.web;
-
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import stagetelerikforumtests.core.ForumBaseTest;
 import stagetelerikforumtests.unums.ForumTestData;
 
 public class ForumCreateNewTopicTests extends ForumBaseTest {
+    private String newTopicTitle;
 
     @BeforeEach
     public void beforeTest(){
@@ -24,6 +25,16 @@ public class ForumCreateNewTopicTests extends ForumBaseTest {
     createNewTopicView.checkElementVisibility();
     createNewTopicView.assertNavigated();
     createNewTopicView.createNewTopic();
+    newTopicTitle = createNewTopicView.getNewTopicTitle();
+
+
+    allTopicsPage.navigate();
+    allTopicsPage.checkElementVisibility();
+
+    boolean isTopicCreated = allTopicsPage.validateNewTopicCreated(newTopicTitle);
+    Assertions.assertTrue(isTopicCreated, "Новата тема не е създадена успешно.");
+
+
 
     stageForumHomePage.logout();
 

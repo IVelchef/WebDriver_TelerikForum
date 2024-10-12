@@ -14,41 +14,32 @@ public class CreateNewTopicView extends StageForumHomePage {
     private final By deleteTopicButtonLocator = By.cssSelector("button.widget-button.btn-flat.delete.no-text.btn-icon");
     private final By cookieDivLocator = By.cssSelector("div.cooked");
     private final String[] descriptionWords = {"automation", "selenium", "java", "topic", "framework", "random", "testing", "web", "driver", "click"};
-    private final String[] titleWords = {"forum", "create", "delete", "validate", "element", "browser", "test", "run", "execute", "validate", "automate"};
+    private final String[] titleWords = {"This", "is", "a", "random", "for", "testing", "newTopic", "automation", "generated", "title"};
 
+    private String newTopicTitle;
 
-
-
-    public void checkElementVisibility () {
+    public void checkElementVisibility() {
 
         driverWait().until(ExpectedConditions.elementToBeClickable(newTopicButtonLocator));
         driver().findElement(newTopicButtonLocator).click();
 
     }
 
-public void createNewTopic (){
+    public void createNewTopic() {
+
         driverWait().until(ExpectedConditions.elementToBeClickable(titleFieldLocator));
-        driver().findElement(titleFieldLocator).sendKeys(generateRandomTitle());
+        newTopicTitle = generateRandomTitle();
+        driver().findElement(titleFieldLocator).sendKeys(newTopicTitle);
 
         driverWait().until(ExpectedConditions.elementToBeClickable(textAreaLocator));
         driver().findElement(textAreaLocator).sendKeys(generateRandomDescription());
 
         driverWait().until(ExpectedConditions.elementToBeClickable(createTopicButtonLocator));
         driver().findElement(createTopicButtonLocator).click();
-
-        driverWait().until(ExpectedConditions.elementToBeClickable(moreActionButtonLocator));
-        driver().findElement(moreActionButtonLocator).click();
-
-        driverWait().until(ExpectedConditions.elementToBeClickable(deleteTopicButtonLocator));
-        driver().findElement(deleteTopicButtonLocator).click();
-
-        driverWait().until(ExpectedConditions.elementToBeClickable(cookieDivLocator));
-        driver().findElement(cookieDivLocator).click();
-
-
     }
 
-    private String generateRandomText(int wordCount, String[] wordArray) {
+
+    private String generateRandomText ( int wordCount, String[] wordArray){
         StringBuilder text = new StringBuilder();
         Random random = new Random();
 
@@ -60,10 +51,14 @@ public void createNewTopic (){
         }
         return text.toString();
     }
-    public String generateRandomTitle() {
+    public String generateRandomTitle () {
         return generateRandomText(5, titleWords);
     }
-    public String generateRandomDescription() {
+    public String generateRandomDescription () {
         return generateRandomText(10, descriptionWords);
+    }
+
+    public String getNewTopicTitle() {
+        return newTopicTitle;
     }
 }

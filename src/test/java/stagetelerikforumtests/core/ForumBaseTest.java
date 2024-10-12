@@ -1,8 +1,5 @@
 package stagetelerikforumtests.core;
-import com.forum.pages.BaseStageForumPage;
-import com.forum.pages.CreateNewTopicView;
-import com.forum.pages.StageForumHomePage;
-import com.forum.pages.StageForumLoginPage;
+import com.forum.pages.*;
 import com.jira.pages.*;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -17,7 +14,7 @@ public class ForumBaseTest extends BaseWebTest {
     protected BaseStageForumPage baseStageForumPage;
     protected StageForumHomePage stageForumHomePage;
     protected CreateNewTopicView createNewTopicView;
-    protected CreateJiraStoryPage createJiraStoryPage;
+    protected AllTopicsPage allTopicsPage;
     protected CreateJiraBugPage createJiraBugPage;
 
     @BeforeEach
@@ -27,6 +24,7 @@ public class ForumBaseTest extends BaseWebTest {
         baseStageForumPage = new BaseStageForumPage();
         stageForumHomePage = new StageForumHomePage();
         createNewTopicView = new CreateNewTopicView();
+        allTopicsPage = new AllTopicsPage();
 
 
         driver().get(PropertiesManager.getConfigProperties().getProperty("TelerikStageForumBaseUrl"));
