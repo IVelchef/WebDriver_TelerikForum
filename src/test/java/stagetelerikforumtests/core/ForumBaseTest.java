@@ -1,5 +1,6 @@
 package stagetelerikforumtests.core;
 import com.forum.pages.BaseStageForumPage;
+import com.forum.pages.CreateNewTopicView;
 import com.forum.pages.StageForumHomePage;
 import com.forum.pages.StageForumLoginPage;
 import com.jira.pages.*;
@@ -15,7 +16,7 @@ public class ForumBaseTest extends BaseWebTest {
     protected StageForumLoginPage stageForumLoginPage;
     protected BaseStageForumPage baseStageForumPage;
     protected StageForumHomePage stageForumHomePage;
-    protected CreateJiraProjectPage createJiraProjectPage;
+    protected CreateNewTopicView createNewTopicView;
     protected CreateJiraStoryPage createJiraStoryPage;
     protected CreateJiraBugPage createJiraBugPage;
 
@@ -25,6 +26,7 @@ public class ForumBaseTest extends BaseWebTest {
         stageForumLoginPage = new StageForumLoginPage();
         baseStageForumPage = new BaseStageForumPage();
         stageForumHomePage = new StageForumHomePage();
+        createNewTopicView = new CreateNewTopicView();
 
 
         driver().get(PropertiesManager.getConfigProperties().getProperty("TelerikStageForumBaseUrl"));
