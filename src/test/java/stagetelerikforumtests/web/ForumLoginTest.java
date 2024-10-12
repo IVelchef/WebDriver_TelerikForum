@@ -1,6 +1,4 @@
 package stagetelerikforumtests.web;
-
-import atlassiantests.unums.JiraTestData;
 import org.junit.jupiter.api.Test;
 import stagetelerikforumtests.core.ForumBaseTest;
 import stagetelerikforumtests.unums.ForumTestData;
@@ -13,6 +11,12 @@ public class ForumLoginTest extends ForumBaseTest {
         stageForumLoginPage.navigate();
 
         stageForumLoginPage.submitLoginForm(ForumTestData.username.getValue(), ForumTestData.password.getValue());
+
+        stageForumHomePage.checkElementVisibility();
+        stageForumHomePage.assertNavigated();
+
+        // Navigate to Log out menu
+        stageForumHomePage.logout();
 
 
 
