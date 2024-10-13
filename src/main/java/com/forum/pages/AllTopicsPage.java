@@ -1,47 +1,69 @@
 package com.forum.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.List;
+
 
 
 public class AllTopicsPage extends BaseStageForumPage {
 
-    private final By allTopicsButtonLocator = By.id("ember7");
-    private final By containerLocator = By.cssSelector(".topic-list-body");
-
+    private final By containerLocator = By.cssSelector("tbody.topic-list-body");
+    private final By topicTitleLocator = By.cssSelector("tbody.topic-list-body tr.topic-list-item td.main-link a.title.raw-link.raw-topic-link");
+    private final By showMoreButtonLocator = By.cssSelector("div.show-more.has-topics");
 
     public AllTopicsPage() {
         super("/latest");
     }
 
-    public void checkElementVisibility () {
-
-        driverWait().until(ExpectedConditions.elementToBeClickable(allTopicsButtonLocator));
-        driver().findElement(allTopicsButtonLocator).click();
-
-
-
-    }
-
-    public boolean validateNewTopicCreated(String topicTitle) {
+    public boolean validateNewTopicCreated(String expectedTopicTitle) {
         try {
-            driver().navigate().refresh();
+            WebDriverWait shortWait = new WebDriverWait(driver(), Duration.ofSeconds(5));
+
+            try {
+                WebElement showMoreButton = shortWait.until(ExpectedConditions.visibilityOfElementLocated(showMoreButtonLocator));
+
+                if (showMoreButton.isDisplayed()) {
+
+                    driverWait().until(ExpectedConditions.invisibilityOf(showMoreButton));
+                    showMoreButton.click();
+                }
+            } catch (TimeoutException e) {
+
+                driver().navigate().refresh();
+            }
 
             driverWait().until(ExpectedConditions.visibilityOfElementLocated(containerLocator));
-            driverWait().until(ExpectedConditions.visibilityOfElementLocated(By.id("list-area")));
 
+            List<WebElement> topics = driverWait().until(ExpectedConditions.numberOfElementsToBeMoreThan(topicTitleLocator, 0));
 
-            By topicLocator = By.xpath("//div[@id='list-area']//a[contains(@class, 'title') and text()='" + topicTitle.trim() + "']");
+            boolean isTopicFound = false;
+            for (WebElement topic : topics) {
+                String topicText = topic.getText().trim();
+                System.out.println("Found topic: " + topicText);
 
-            driverWait().until(ExpectedConditions.visibilityOfElementLocated(topicLocator));
+                if (topicText.toLowerCase().contains(expectedTopicTitle.toLowerCase().trim())) {
+                    System.out.println("New topic found: " + topicText);
+                    isTopicFound = true;
+                    break;
+                }
+            }
 
-            return driver().findElements(topicLocator).size() > 0;
+            if (!isTopicFound) {
+                System.out.println("New topic not found.");
+            }
+
+            return isTopicFound;
 
         } catch (Exception e) {
-            System.err.println("Грешка при валидацията на темата: " + e.getMessage());
+            System.err.println("Error: " + e.getMessage());
             return false;
         }
     }
-    }
-
+}
 

@@ -8,7 +8,7 @@ public class CreateNewTopicView extends StageForumHomePage {
 
     private final By newTopicButtonLocator = By.id("create-topic");
     private final By titleFieldLocator = By.id("reply-title");
-    private final By textAreaLocator = By.id("ember155");
+    private final By textAreaLocator = By.cssSelector("textarea.d-editor-input");
     private final By createTopicButtonLocator = By.cssSelector("button.btn.btn-icon-text.btn-primary.create");
     private final By moreActionButtonLocator = By.cssSelector("button.widget-button.btn-flat.show-more-actions.no-text.btn-icon");
     private final By deleteTopicButtonLocator = By.cssSelector("button.widget-button.btn-flat.delete.no-text.btn-icon");
@@ -31,7 +31,7 @@ public class CreateNewTopicView extends StageForumHomePage {
         newTopicTitle = generateRandomTitle();
         driver().findElement(titleFieldLocator).sendKeys(newTopicTitle);
 
-        driverWait().until(ExpectedConditions.elementToBeClickable(textAreaLocator));
+        driverWait().until(ExpectedConditions.elementToBeClickable(textAreaLocator)).click();
         driver().findElement(textAreaLocator).sendKeys(generateRandomDescription());
 
         driverWait().until(ExpectedConditions.elementToBeClickable(createTopicButtonLocator));

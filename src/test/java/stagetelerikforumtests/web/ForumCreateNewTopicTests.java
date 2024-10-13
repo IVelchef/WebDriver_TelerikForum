@@ -15,28 +15,28 @@ public class ForumCreateNewTopicTests extends ForumBaseTest {
 
     }
 
-@Test
+    @Test
     public void createNewTopicTest () {
 
-    stageForumHomePage.waitForPageTitle();
-    stageForumHomePage.checkElementVisibility();
-    stageForumHomePage.assertNavigated();
+        stageForumHomePage.waitForPageTitle();
+        stageForumHomePage.checkElementVisibility();
+        stageForumHomePage.assertNavigated();
 
-    createNewTopicView.checkElementVisibility();
-    createNewTopicView.assertNavigated();
-    createNewTopicView.createNewTopic();
-    newTopicTitle = createNewTopicView.getNewTopicTitle();
-
-
-    allTopicsPage.navigate();
-    allTopicsPage.checkElementVisibility();
-
-    boolean isTopicCreated = allTopicsPage.validateNewTopicCreated(newTopicTitle);
-    Assertions.assertTrue(isTopicCreated, "Новата тема не е създадена успешно.");
+        createNewTopicView.checkElementVisibility();
+        createNewTopicView.assertNavigated();
+        createNewTopicView.createNewTopic();
+        newTopicTitle = createNewTopicView.getNewTopicTitle();
 
 
+        allTopicsPage.navigate();
+      //  allTopicsPage.checkElementVisibility();
 
-    stageForumHomePage.logout();
+        boolean isTopicCreated = allTopicsPage.validateNewTopicCreated(newTopicTitle);
+        Assertions.assertTrue(isTopicCreated, "Topic Error");
+
+
+
+        stageForumHomePage.logout();
 
 
     }
