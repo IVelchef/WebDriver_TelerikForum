@@ -15,7 +15,7 @@ public class ForumBaseTest extends BaseWebTest {
     protected StageForumHomePage stageForumHomePage;
     protected CreateNewTopicView createNewTopicView;
     protected AllTopicsPage allTopicsPage;
-    protected CreateJiraBugPage createJiraBugPage;
+    protected AlphaPreparationPage alphaPreparationPage;
 
     @BeforeEach
     public void beforeTests() {
@@ -25,6 +25,7 @@ public class ForumBaseTest extends BaseWebTest {
         stageForumHomePage = new StageForumHomePage();
         createNewTopicView = new CreateNewTopicView();
         allTopicsPage = new AllTopicsPage();
+        alphaPreparationPage = new AlphaPreparationPage();
 
 
         driver().get(PropertiesManager.getConfigProperties().getProperty("TelerikStageForumBaseUrl"));

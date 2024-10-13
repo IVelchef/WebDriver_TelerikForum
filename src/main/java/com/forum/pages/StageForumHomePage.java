@@ -52,12 +52,5 @@ public class StageForumHomePage extends BaseStageForumPage{
         driver().findElement(logoutButtonLocator).click();
 
 
-
-
-
-//        driver().findElement(currentUserLocator).click();
-//        var menuButton = driver().findElement(userMenuButtonLocator);
-//        driverWait().until(ExpectedConditions.elementToBeClickable(logoutBtn));
-//        logoutBtn.click();
     }
 }

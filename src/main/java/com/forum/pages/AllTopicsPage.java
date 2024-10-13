@@ -55,7 +55,7 @@ public class AllTopicsPage extends BaseStageForumPage {
                 System.out.println("Found topic: " + topicText);
 
                 if (topicText.toLowerCase().contains(expectedTopicTitle.toLowerCase().trim())) {
-                   // System.out.println("New topic found: " + topicText);
+                    System.out.println("New topic found: " + topicText);
                     isTopicFound = true;
                     break;
                 }
@@ -73,4 +73,3 @@ public class AllTopicsPage extends BaseStageForumPage {
         }
     }
 }
-
