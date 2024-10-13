@@ -52,7 +52,9 @@ public class CreateNewTopicView extends StageForumHomePage {
         return text.toString();
     }
     public String generateRandomTitle () {
-        return generateRandomText(5, titleWords);
+        Random random = new Random();
+        int randomNumber = 100 + random.nextInt(900);  // Генерира трицифрено число между 100 и 999
+        return "This is a random generated title for testing newTopic automation - " + randomNumber;    // Връщаме текст с трицифреното число
     }
     public String generateRandomDescription () {
         return generateRandomText(10, descriptionWords);

@@ -23,19 +23,26 @@ public class AllTopicsPage extends BaseStageForumPage {
 
     public boolean validateNewTopicCreated(String expectedTopicTitle) {
         try {
-            WebDriverWait shortWait = new WebDriverWait(driver(), Duration.ofSeconds(5));
+            WebElement showMoreButton;
 
             try {
-                WebElement showMoreButton = shortWait.until(ExpectedConditions.visibilityOfElementLocated(showMoreButtonLocator));
-
+                showMoreButton = driverWait().until(ExpectedConditions.visibilityOfElementLocated(showMoreButtonLocator));
                 if (showMoreButton.isDisplayed()) {
-
-                    driverWait().until(ExpectedConditions.invisibilityOf(showMoreButton));
                     showMoreButton.click();
+                    driverWait().until(ExpectedConditions.invisibilityOf(showMoreButton));
                 }
-            } catch (TimeoutException e) {
+            } catch (Exception e1) {
+                WebDriverWait wait = new WebDriverWait(driver(), Duration.ofSeconds(3));
+                try {
+                    showMoreButton = wait.until(ExpectedConditions.visibilityOfElementLocated(showMoreButtonLocator));
 
-                driver().navigate().refresh();
+                    if (showMoreButton.isDisplayed()) {
+                        showMoreButton.click();
+                        driverWait().until(ExpectedConditions.invisibilityOf(showMoreButton));
+                    }
+                } catch (TimeoutException e2) {
+                    driver().navigate().refresh();
+                }
             }
 
             driverWait().until(ExpectedConditions.visibilityOfElementLocated(containerLocator));
@@ -48,7 +55,7 @@ public class AllTopicsPage extends BaseStageForumPage {
                 System.out.println("Found topic: " + topicText);
 
                 if (topicText.toLowerCase().contains(expectedTopicTitle.toLowerCase().trim())) {
-                    System.out.println("New topic found: " + topicText);
+                   // System.out.println("New topic found: " + topicText);
                     isTopicFound = true;
                     break;
                 }
