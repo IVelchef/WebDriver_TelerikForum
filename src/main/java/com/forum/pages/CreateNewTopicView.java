@@ -10,11 +10,12 @@ public class CreateNewTopicView extends StageForumHomePage {
     private final By titleFieldLocator = By.id("reply-title");
     private final By textAreaLocator = By.cssSelector("textarea.d-editor-input");
     private final By createTopicButtonLocator = By.cssSelector("button.btn.btn-icon-text.btn-primary.create");
-    private final By moreActionButtonLocator = By.cssSelector("button.widget-button.btn-flat.show-more-actions.no-text.btn-icon");
-    private final By deleteTopicButtonLocator = By.cssSelector("button.widget-button.btn-flat.delete.no-text.btn-icon");
-    private final By cookieDivLocator = By.cssSelector("div.cooked");
-    private final String[] descriptionWords = {"automation", "selenium", "java", "topic", "framework", "random", "testing", "web", "driver", "click"};
-    private final String[] titleWords = {"This", "is", "a", "random", "for", "testing", "newTopic", "automation", "generated", "title"};
+
+    private final String[] descriptionWords = {"automation", "selenium", "java", "topic", "framework",
+            "random", "testing", "web", "driver", "click"};
+
+
+
 
     private String newTopicTitle;
 
@@ -51,11 +52,13 @@ public class CreateNewTopicView extends StageForumHomePage {
         }
         return text.toString();
     }
+
     public String generateRandomTitle () {
         Random random = new Random();
-        int randomNumber = 100 + random.nextInt(900);  // Генерира трицифрено число между 100 и 999
-        return "This is a random generated title for testing newTopic automation - " + randomNumber;    // Връщаме текст с трицифреното число
+        int randomNumber = 100 + random.nextInt(900);
+        return "This is a random generated title for testing newTopic automation - " + randomNumber;
     }
+
     public String generateRandomDescription () {
         return generateRandomText(10, descriptionWords);
     }

@@ -29,15 +29,13 @@ public class ForumCreateNewTopicTests extends ForumBaseTest {
 
 
         allTopicsPage.navigate();
-      //  allTopicsPage.checkElementVisibility();
 
         boolean isTopicCreated = allTopicsPage.validateNewTopicCreated(newTopicTitle);
-        Assertions.assertTrue(isTopicCreated, "Topic Error");
+        Assertions.assertTrue(isTopicCreated, "Error - Topic created but not found in latest topic");
 
 
 
         stageForumHomePage.logout();
-
 
     }
 }

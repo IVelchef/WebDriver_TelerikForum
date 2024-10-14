@@ -14,8 +14,20 @@ import java.util.List;
 public class AllTopicsPage extends BaseStageForumPage {
 
     private final By containerLocator = By.cssSelector("tbody.topic-list-body");
-    private final By topicTitleLocator = By.cssSelector("tbody.topic-list-body tr.topic-list-item td.main-link a.title.raw-link.raw-topic-link");
+    private final By topicTitleLocator = By.cssSelector("tbody.topic-list-body tr.topic-list-item td" +
+            ".main-link a.title.raw-link.raw-topic-link");
     private final By showMoreButtonLocator = By.cssSelector("div.show-more.has-topics");
+    private final By titleLinkButtonLocator = By.cssSelector("a.title.raw-link.raw-topic-link");
+
+
+
+
+
+
+    private final By moreActionButtonLocator = By.cssSelector("button.widget-button.btn-flat" +
+            ".show-more-actions.no-text.btn-icon");
+    private final By deleteTopicButtonLocator = By.cssSelector("button.widget-button.btn-flat.delete.no-text.btn-icon");
+    private final By cookieDivLocator = By.cssSelector("div.cooked");
 
     public AllTopicsPage() {
         super("/latest");
@@ -47,7 +59,8 @@ public class AllTopicsPage extends BaseStageForumPage {
 
             driverWait().until(ExpectedConditions.visibilityOfElementLocated(containerLocator));
 
-            List<WebElement> topics = driverWait().until(ExpectedConditions.numberOfElementsToBeMoreThan(topicTitleLocator, 0));
+            List<WebElement> topics = driverWait().until(ExpectedConditions.numberOfElementsToBeMoreThan
+                    (topicTitleLocator, 0));
 
             boolean isTopicFound = false;
             for (WebElement topic : topics) {
@@ -72,4 +85,71 @@ public class AllTopicsPage extends BaseStageForumPage {
             return false;
         }
     }
-}
+
+
+    public boolean deleteTopic ( String expectedTopicTitle) {
+
+
+        try {
+            driverWait().until(ExpectedConditions.visibilityOfElementLocated(containerLocator));
+
+            List<WebElement> topics = driverWait().until(ExpectedConditions.numberOfElementsToBeMoreThan
+                    (topicTitleLocator, 0));
+
+            boolean isTopicFound = false;
+
+            for (WebElement topic : topics) {
+                String topicText = topic.getText().trim();
+                System.out.println("Found topic: " + topicText);
+
+                if (topicText.toLowerCase().contains(expectedTopicTitle.toLowerCase().trim())) {
+                    System.out.println("Topic found: " + topicText);
+
+
+                    driverWait().until(ExpectedConditions.visibilityOfElementLocated(titleLinkButtonLocator));
+                    driverWait().until(ExpectedConditions.elementToBeClickable(titleLinkButtonLocator)).click();
+
+
+                    driverWait().until(ExpectedConditions.visibilityOfElementLocated(moreActionButtonLocator));
+                    driverWait().until(ExpectedConditions.elementToBeClickable(moreActionButtonLocator)).click();
+
+
+                    driverWait().until(ExpectedConditions.visibilityOfElementLocated(deleteTopicButtonLocator));
+                    driverWait().until(ExpectedConditions.elementToBeClickable(deleteTopicButtonLocator)).click();
+
+
+
+//                    WebElement confirmDeleteButton = driverWait().until(ExpectedConditions.elementToBeClickable((cookieDivLocator)));
+//                    confirmDeleteButton.click();
+
+                    System.out.println("Topic deleted: " + topicText);
+                    isTopicFound = true;
+                    break;
+                }
+            }
+
+            if (!isTopicFound) {
+                System.out.println("Topic not found: " + expectedTopicTitle);
+            }
+
+            return isTopicFound;
+
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+            return false;
+        }
+
+
+
+
+
+
+    }
+    }
+
+
+
+
+
+
+

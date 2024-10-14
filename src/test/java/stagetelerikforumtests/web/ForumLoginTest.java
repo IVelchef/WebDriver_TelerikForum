@@ -15,7 +15,6 @@ public class ForumLoginTest extends ForumBaseTest {
         stageForumHomePage.checkElementVisibility();
         stageForumHomePage.assertNavigated();
 
-        // Navigate to Log out menu
         stageForumHomePage.logout();
 
 

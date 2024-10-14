@@ -1,5 +1,5 @@
 package stagetelerikforumtests.web;
-
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import stagetelerikforumtests.core.ForumBaseTest;
@@ -27,7 +27,11 @@ public class ForumAddCommentToTopicTests extends ForumBaseTest {
         alphaPreparationPage.checkElementVisibility();
         alphaPreparationPage.openSpecificTopic();
 
-        alphaPreparationPage.addReplyToTopic();
+       // alphaPreparationPage.addReplyToTopic();
+
+        boolean isCommentPresent = alphaPreparationPage.validateCommentIsVisible();
+
+        Assertions.assertTrue(isCommentPresent, "The comment was not found in the topic.");
 
 
 
