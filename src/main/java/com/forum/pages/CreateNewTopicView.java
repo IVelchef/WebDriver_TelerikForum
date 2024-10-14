@@ -11,8 +11,13 @@ public class CreateNewTopicView extends StageForumHomePage {
     private final By textAreaLocator = By.cssSelector("textarea.d-editor-input");
     private final By createTopicButtonLocator = By.cssSelector("button.btn.btn-icon-text.btn-primary.create");
 
-    private final String[] descriptionWords = {"automation", "selenium", "java", "topic", "framework",
-            "random", "testing", "web", "driver", "click"};
+    private final String[] descriptionWords = {"automation", "selenium", "java", "framework", "testing", "web", "driver",
+            "code", "API", "server", "backend", "frontend", "cloud", "deployment", "container", "virtualization"
+            , "database", "integration", "system", "network", "microservices", "architecture", "agile", "scrum", "devops"
+            , "performance", "scalability", "security", "cloud-native", "version-control",
+            "build",  "test-automation", "artificial-intelligence", "machine-learning",
+            "monitoring","infrastructure",  "PaaS", "SaaS", "data", "rest", "soap", "http"
+    };
 
 
 
@@ -41,8 +46,9 @@ public class CreateNewTopicView extends StageForumHomePage {
 
 
     private String generateRandomText ( int wordCount, String[] wordArray){
-        StringBuilder text = new StringBuilder();
+        StringBuilder text = new StringBuilder("This is a random generated title for testing newTopic automation - ");
         Random random = new Random();
+
 
         for (int i = 0; i < wordCount; i++) {
             text.append(wordArray[random.nextInt(wordArray.length)]);
@@ -50,6 +56,7 @@ public class CreateNewTopicView extends StageForumHomePage {
                 text.append(" ");
             }
         }
+
         return text.toString();
     }
 

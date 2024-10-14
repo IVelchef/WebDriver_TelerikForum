@@ -33,6 +33,7 @@ public class ForumCreateNewTopicTests extends ForumBaseTest {
         boolean isTopicCreated = allTopicsPage.validateNewTopicCreated(newTopicTitle);
         Assertions.assertTrue(isTopicCreated, "Error - Topic created but not found in latest topic");
 
+        allTopicsPage.deleteTopic(newTopicTitle);
 
 
         stageForumHomePage.logout();

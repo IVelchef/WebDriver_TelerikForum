@@ -24,8 +24,7 @@ public class AllTopicsPage extends BaseStageForumPage {
 
 
 
-    private final By moreActionButtonLocator = By.cssSelector("button.widget-button.btn-flat" +
-            ".show-more-actions.no-text.btn-icon");
+    private final By moreActionButtonLocator = By.cssSelector("button.widget-button.btn-flat.show-more-actions.no-text.btn-icon");
     private final By deleteTopicButtonLocator = By.cssSelector("button.widget-button.btn-flat.delete.no-text.btn-icon");
     private final By cookieDivLocator = By.cssSelector("div.cooked");
 
@@ -65,7 +64,6 @@ public class AllTopicsPage extends BaseStageForumPage {
             boolean isTopicFound = false;
             for (WebElement topic : topics) {
                 String topicText = topic.getText().trim();
-                System.out.println("Found topic: " + topicText);
 
                 if (topicText.toLowerCase().contains(expectedTopicTitle.toLowerCase().trim())) {
                     System.out.println("New topic found: " + topicText);
@@ -100,10 +98,10 @@ public class AllTopicsPage extends BaseStageForumPage {
 
             for (WebElement topic : topics) {
                 String topicText = topic.getText().trim();
-                System.out.println("Found topic: " + topicText);
+                //System.out.println("Found topic: " + topicText);
 
                 if (topicText.toLowerCase().contains(expectedTopicTitle.toLowerCase().trim())) {
-                    System.out.println("Topic found: " + topicText);
+                    //System.out.println("Topic found: " + topicText);
 
 
                     driverWait().until(ExpectedConditions.visibilityOfElementLocated(titleLinkButtonLocator));
@@ -138,11 +136,6 @@ public class AllTopicsPage extends BaseStageForumPage {
             System.err.println("Error: " + e.getMessage());
             return false;
         }
-
-
-
-
-
 
     }
     }

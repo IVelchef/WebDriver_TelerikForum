@@ -27,13 +27,12 @@ public class ForumAddCommentToTopicTests extends ForumBaseTest {
         alphaPreparationPage.checkElementVisibility();
         alphaPreparationPage.openSpecificTopic();
 
-       // alphaPreparationPage.addReplyToTopic();
+        alphaPreparationPage.addReplyToTopic();
 
+        alphaPreparationPage.navigate();
         boolean isCommentPresent = alphaPreparationPage.validateCommentIsVisible();
 
         Assertions.assertTrue(isCommentPresent, "The comment was not found in the topic.");
-
-
 
 
         stageForumHomePage.logout();
