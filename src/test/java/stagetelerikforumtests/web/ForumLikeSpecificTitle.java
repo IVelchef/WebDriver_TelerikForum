@@ -22,10 +22,7 @@ public class ForumLikeSpecificTitle extends ForumBaseTest {
         stageForumHomePage.checkElementVisibility();
         stageForumHomePage.assertNavigated();
 
-        allTopicsPage.navigate();
-
         openAndLikeSpecificTopicPage.navigate();
-        openAndLikeSpecificTopicPage.openSpecificTopic();
 
         openAndLikeSpecificTopicPage.LikeTheTopic();
 
@@ -45,10 +42,8 @@ public class ForumLikeSpecificTitle extends ForumBaseTest {
         stageForumHomePage.checkElementVisibility();
         stageForumHomePage.assertNavigated();
 
-        allTopicsPage.navigate();
 
         openAndLikeSpecificTopicPage.navigate();
-        openAndLikeSpecificTopicPage.openSpecificTopic();
 
         openAndLikeSpecificTopicPage.LikeTheTopic();
 
