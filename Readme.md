@@ -14,3 +14,4 @@ I assert the like's tests by validating the change in the button's status after 
 I didn't dare move the logout logic to @AfterEach.
 
 
+The prerequisites are in the enums/ folder and ForumTestData
