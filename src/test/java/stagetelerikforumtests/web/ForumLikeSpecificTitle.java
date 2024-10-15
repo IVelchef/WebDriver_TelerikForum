@@ -1,4 +1,5 @@
 package stagetelerikforumtests.web;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import stagetelerikforumtests.core.ForumBaseTest;
@@ -28,10 +29,30 @@ public class ForumLikeSpecificTitle extends ForumBaseTest {
 
         openAndLikeSpecificTopicPage.LikeTheTopic();
 
-        //openAndLikeSpecificTopicPage.unLikeTheTopic();
+        Assertions.assertTrue(openAndLikeSpecificTopicPage.getLikeButtonTitle().equals("you've liked this post") ||
+                openAndLikeSpecificTopicPage.getLikeButtonTitle().equals("undo like") ||
+                openAndLikeSpecificTopicPage.getLikeButtonTitle().equals("you liked this post"), "Error");
 
 
+        stageForumHomePage.logout();
 
+    }
+
+    @Test
+    public void unlikeSpecificTopic () {
+
+        stageForumHomePage.waitForPageTitle();
+        stageForumHomePage.checkElementVisibility();
+        stageForumHomePage.assertNavigated();
+
+        allTopicsPage.navigate();
+
+        openAndLikeSpecificTopicPage.navigate();
+        openAndLikeSpecificTopicPage.openSpecificTopic();
+
+        openAndLikeSpecificTopicPage.LikeTheTopic();
+
+        Assertions.assertTrue(openAndLikeSpecificTopicPage.getLikeButtonTitle().equals("like this post"), "Error");
 
         stageForumHomePage.logout();
 

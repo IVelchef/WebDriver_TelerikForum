@@ -24,8 +24,6 @@ public class ForumAddCommentToTopicTests extends ForumBaseTest {
 
 
         alphaPreparationPage.navigate();
-        alphaPreparationPage.checkElementVisibility();
-        alphaPreparationPage.openSpecificTopic();
 
         alphaPreparationPage.addReplyToTopic();
 
