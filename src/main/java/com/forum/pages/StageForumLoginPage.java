@@ -1,5 +1,4 @@
 package com.forum.pages;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,7 +9,6 @@ import java.time.Duration;
 public class StageForumLoginPage extends BaseStageForumPage{
 
 
-    private final By loginButtonLocator = By.xpath("//button[contains(@class, 'login-button')]");
     private final By emailLocator = By.id("Email");
     private final By passwordLocator = By.id("Password");
     private final By submitButtonLocator = By.id("next");

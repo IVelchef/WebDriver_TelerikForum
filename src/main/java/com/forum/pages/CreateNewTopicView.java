@@ -31,6 +31,7 @@ public class CreateNewTopicView extends StageForumHomePage {
 
     }
 
+
     public void createNewTopic() {
 
         driverWait().until(ExpectedConditions.elementToBeClickable(titleFieldLocator));

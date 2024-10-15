@@ -14,7 +14,6 @@ public class StageForumHomePage extends BaseStageForumPage{
     }
 
     private final By newTopicButtonLocator = By.id("create-topic");
-
     private final By sidebarSectionLocator = By.className("sidebar-section-link-content-text");
     private final By currentUserLocator = By.id("current-user");
     private final By userMenuButtonLocator = By.id("user-menu-button-profile");

@@ -1,5 +1,4 @@
 package com.forum.pages;
-
 import testframework.PropertiesManager;
 import testframework.core.BaseWebPage;
 

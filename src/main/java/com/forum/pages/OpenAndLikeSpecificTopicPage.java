@@ -7,7 +7,6 @@ public class OpenAndLikeSpecificTopicPage extends BaseStageForumPage{
 
 
     private final By likeButtonLocator = By.xpath("//button[contains(@class, 'toggle-like')]");
-
     private final By repliesCountLocator = By.cssSelector(".topic-map .replies .number");
 
 
