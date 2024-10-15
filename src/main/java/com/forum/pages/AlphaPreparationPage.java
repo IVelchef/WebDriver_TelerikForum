@@ -13,15 +13,13 @@ public class AlphaPreparationPage extends BaseStageForumPage {
 
 
     private final By listAreaLocator = By.id("list-area");
-
     private final By createButtonLocator = By.cssSelector("button.widget-button.btn-flat.reply.create.fade-out.btn-icon-text");
     private final By textAreaLocator = By.cssSelector(".d-editor-input");
     private final By createReplyButtonLocator = By.cssSelector("div.save-or-cancel button" +
             ".btn.btn-icon-text.btn-primary.create");
 
-    public static final String titleComment = "Hi, I am Velchev Vanko , and I did it";
+    public static final String titleComment = "Hi, I am Ivan , and I did it";
     public static final String textEmojiComment = " :smile: :partying_face: :beers: :see_no_evil: :hear_no_evil: :speak_no_evil: :heart:";
-
     private final By repliesCountLocator = By.cssSelector(".topic-map .replies .number");
 
 
