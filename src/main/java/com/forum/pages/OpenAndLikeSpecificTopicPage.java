@@ -8,7 +8,8 @@ public class OpenAndLikeSpecificTopicPage extends BaseStageForumPage{
     private final By topicRowLocator = By.xpath("//tbody[@class='topic-list-body']//tr[." +
             "//a[text()='Alpha 61 QA - We are awesome and great']]");
     private final By listAreaLocator = By.id("list-area");
-    private final By likeButtonLocator = By.xpath("//button[@data-post-id='34574' and @title='like this post']");
+    private final By likeButton = By.id("list-area");
+    private final By likeButtonLocator = By.xpath("//button[@title='like this post' and contains(@class, 'toggle-like')]");
 
 
     public OpenAndLikeSpecificTopicPage(){
@@ -36,25 +37,46 @@ public class OpenAndLikeSpecificTopicPage extends BaseStageForumPage{
 
     public void LikeTheTopic () {
 
+        WebElement element = driverWait().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.two-rows.extra-info-wrapper")));
+        element.click();
 
+        WebElement likeButton = driverWait().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(@class, 'toggle-like')]")));
 
-        try {
+        String titleAttribute = likeButton.getAttribute("title");
+        System.out.println("Current button title: " + titleAttribute);
 
-            WebElement element = driverWait().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.two-rows.extra-info-wrapper")));
-            element.click();
+        if (titleAttribute.equals("like this post")) {
+            likeButton.click();
+            System.out.println("The topic has been liked.");
 
-            WebElement likeButton = driverWait().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@title='like this post' and contains(@class, 'toggle-like')]")));
-            if (likeButton.isDisplayed()) {
-                likeButton.click();
-                System.out.println("The topic has been liked.");
-
-                driverWait().until(ExpectedConditions.attributeToBe(likeButton, "title", "undo like"));
-            }
-        } catch (Exception e) {
-            System.out.println("Failed to find or click the like button.");
+            driverWait().until(ExpectedConditions.attributeToBe(likeButton, "title", "you've liked this post"));
         }
 
+
+        else if (titleAttribute.equals("you've liked this post") || titleAttribute.equals("undo like") || titleAttribute.equals("you liked this post")) {
+            WebElement undoLikeButton = driverWait().until(ExpectedConditions.visibilityOfElementLocated(
+                    By.xpath("//button[@title=\"" + titleAttribute + "\" and contains(@class, 'toggle-like')]")
+            ));
+
+
+
+
+            driverWait().until(ExpectedConditions.elementToBeClickable(undoLikeButton)).click();
+            System.out.println("The like has been undone.");
+
+            driverWait().until(ExpectedConditions.attributeToBe(likeButton, "title", "like this post"));
+        }
+
+        else {
+            System.out.println("The button has an unexpected title: " + titleAttribute);
+        }
     }
+
+
+
+
+
+
 
 
 

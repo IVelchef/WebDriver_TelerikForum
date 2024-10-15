@@ -4,8 +4,8 @@ import java.util.UUID;
 
 public enum ForumTestData {
 
-    username ("ivanvelchev2105@gmail.com"),
-    password ("Vanio143276");
+    username ("ivan.velchev.a61@learn.telerikacademy.com"),
+    password ("Vanio143");
 
 
     private  String value;
