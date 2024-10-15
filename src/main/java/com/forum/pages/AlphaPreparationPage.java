@@ -19,7 +19,7 @@ public class AlphaPreparationPage extends BaseStageForumPage {
     private final By createReplyButtonLocator = By.cssSelector("div.save-or-cancel button" +
             ".btn.btn-icon-text.btn-primary.create");
 
-    public static final String titleComment = "Hi, I am Vanio Velchev , and I did it";
+    public static final String titleComment = "Hi, I am Velchev Vanko , and I did it";
     public static final String textEmojiComment = " :smile: :partying_face: :beers: :see_no_evil: :hear_no_evil: :speak_no_evil: :heart:";
 
     private final By repliesCountLocator = By.cssSelector(".topic-map .replies .number");
