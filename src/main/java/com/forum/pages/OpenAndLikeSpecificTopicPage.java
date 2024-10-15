@@ -13,7 +13,7 @@ public class OpenAndLikeSpecificTopicPage extends BaseStageForumPage{
 
     public OpenAndLikeSpecificTopicPage(){
 
-        super("/t/alpha-50-qa-we-are-awesome-and-great/");
+        super("/t/alpha-61-qa-we-are-awesome-and-great/");
     }
 
 
